@@ -1,0 +1,64 @@
+{
+  "techs": [
+    {
+      "name": "Excel",
+      "image": "assets/tech_img/excel.jpeg",
+      "link": "https://products.office.com/en-us/excel"
+    },
+    {
+      "name": "Python",
+      "image": "assets/tech_img/python.gif",
+      "link": "https://www.python.org/"
+    },
+    {
+      "name": "Pandas",
+      "image": "assets/tech_img/pandas-logo.png",
+      "link": "https://pandas.pydata.org/"
+    },
+    {
+      "name": "Matplotlib",
+      "image": "assets/tech_img/matplotlib.png",
+      "link": "https://matplotlib.org/"
+    },
+    {
+      "name": "PostgreSQL",
+      "image": "assets/tech_img/postgres.png",
+      "link": "https://www.postgresql.org/"
+    },
+    {
+      "name": "SQL",
+      "image": "assets/tech_img/sql.png",
+      "link": "https://en.wikipedia.org/wiki/SQL"
+    },
+    {
+      "name": "Git",
+      "image": "assets/tech_img/git.png",
+      "link": "https://git-scm.com/"
+    },
+    {
+      "name": "GitHub",
+      "image": "assets/tech_img/github.png",
+      "link": "https://github.com/"
+    },
+    {
+      "name": "Jupyter",
+      "image": "assets/tech_img/jupyter.png",
+      "link": "https://jupyter.org/"
+    },
+    {
+      "name": "Beautiful Soup",
+      "image": "assets/tech_img/beautifulsoup.png",
+      "link": "https://www.crummy.com/software/BeautifulSoup/"
+    },
+    {
+      "name": "Power BI",
+      "image": "assets/tech_img/powerbi.png",
+      "link": "https://powerbi.microsoft.com/en-us/"
+    },
+    {
+      "name": "Tableau",
+      "image": "assets/tech_img/tableau.png",
+      "link": "https://www.tableau.com/"
+    }
+  ]
+}
