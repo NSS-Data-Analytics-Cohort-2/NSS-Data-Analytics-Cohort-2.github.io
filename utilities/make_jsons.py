@@ -70,20 +70,5 @@ def crop_image(img_path, ratio, desired_width = 1024, desired_height = 153):
 
     new_height_half = (width/ratio)/2
 
-    # width_diff = width - desired_width
-    # height_diff = height - desired_height
-    #
-    # if width_diff < 0:
-    #     raise Exception ("Image too narrow")
-    # else:
-    #     remove_left_right = width_diff/2
-    #
-    # if height_diff < 0:
-    #     raise Exception ("Image too short")
-    # else:
-    #     remove_top_bottom = height_diff/2
-
-
-
     cropped = img.crop((0, new_height_half, width, height - new_height_half))
     cropped.save(img_path, "JPEG")
