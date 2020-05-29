@@ -17,6 +17,8 @@ blockquote {
   padding: 2em;
 }
 
+header { height: 130px; }
+
 .navbar {
   background-color: rgb(55, 55, 56);
   padding: 20px;
