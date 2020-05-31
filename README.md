@@ -1,4 +1,4 @@
-[class website](https://NSS-Part-Time-Data-Analytics-2.github.io)
+[class website](https://NSS-Data-Analytics-Cohort-2.github.io)
 NSS Part Time Data Analytics Cohort 2
 
 ### Development
