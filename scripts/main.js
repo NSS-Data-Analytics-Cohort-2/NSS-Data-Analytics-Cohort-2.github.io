@@ -48,7 +48,7 @@ function studentContact(record) {
 function studentLearnMore(record) {
   if (record.bio == null) return "";
 
-  let learnMoreButton = `<center><button type="button" class="btn btn-block btn-outline-primary learnMoreButton title-font bottom" data-toggle="modal" data-target="#${cohortMemberID(record.id)}">Learn More!</button></center>`; 
+  let learnMoreButton = `<center><button type="button" class="btn btn-block btn-outline-primary learnMoreButton title-font bottom" data-toggle="modal" data-target="#${cohortMemberID(record.id)}">Learn More!</button></center>`;
   let modal = `
     <div class="modal fade" id="${cohortMemberID(record.id)}" tabindex="-1" role="dialog" aria-labelledby="${cohortMemberID(record.id)}Label" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -75,6 +75,21 @@ function studentLearnMore(record) {
   return learnMoreButton + modal
 }
 
+function studentResume(record) {
+  if (record.resume == null) return "";
+
+  let resumeButton = `
+    <center>
+      <a target="_blank" href="${record.resume}">
+        <button type="button" class="btn btn-block btn-outline-primary resumeButton title-font bottom">
+          Resume
+        </button>
+      </a>
+    </center>`;
+
+  return resumeButton
+}
+
 
 function buildCohortCard(record) {
   return `
@@ -86,6 +101,7 @@ function buildCohortCard(record) {
     </div>
     <div class="mt-auto cohortCard--learnMore">
       ${studentContact(record)}
+      ${studentResume(record)}
       ${studentLearnMore(record)}
     </div>
   </div>`;
