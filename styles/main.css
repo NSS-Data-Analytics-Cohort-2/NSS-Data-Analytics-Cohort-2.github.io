@@ -155,6 +155,14 @@ button.learnMoreButton {
   background-color: #238193 !important;
 }
 
+button.resumeButton {
+  border-radius: .25rem .25rem 0 0;
+  line-height: 1.75;
+  font-size: 1.5rem;
+  color: white !important;
+  background-color: #238193 !important;
+}
+
 .modal-body {
   display: block;
 }
