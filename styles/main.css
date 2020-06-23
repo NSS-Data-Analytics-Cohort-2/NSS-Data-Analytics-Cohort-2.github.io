@@ -19,6 +19,11 @@ blockquote {
 
 header { height: 130px; }
 
+.disabled {
+  color: grey;
+  opacity: 0.5;
+}
+
 .navbar {
   background-color: rgb(55, 55, 56);
   padding: 20px;
@@ -178,7 +183,8 @@ button.resumeButton {
 .contactIcons {
   color: #238193;
 }
-.contactIcons:hover {
+
+a:not(.disabled) > .contactIcons:hover {
   transform: scale(1.2);
 }
 

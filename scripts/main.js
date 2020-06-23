@@ -26,7 +26,7 @@ const studentName = (record) => `<h4 class="card-title title-font">${record.firs
 const studentReelThemIn = (record) => record.reelThemIn == null ? "" : `<p class="card-text">${record.reelThemIn}</p>`
 
 // if they don't have an href, don't display the icon.
-const buildHREFIcon = (href, icon) => href == null ? "" : `<a href=${href} target="_blank">${icon}</i></a>`
+const buildHREFIcon = (href, icon) => href == null ? `<a href=${href} target="_blank" class="disabled" disabled>${icon}</i></a>` : `<a href=${href} target="_blank">${icon}</i></a>`
 
 const buildFabIcon = (label) => `<i class="fab fa-${label} fa-2x contactIcons"></i>`
 const buildFasIcon = (label) => `<i class="fas fa-${label} fa-2x contactIcons"></i>`
@@ -42,6 +42,22 @@ function studentContact(record) {
     ${buildGithub(record.github)}
     ${buildLinkedin(record.linkedin)}
   </div>`
+}
+
+
+function studentResume(record) {
+  if (record.resume == null) return "";
+
+  let resumeButton = `
+    <center>
+      <a target="_blank" href="${record.resume}">
+        <button type="button" class="btn btn-block btn-outline-primary resumeButton title-font bottom">
+          Resume
+        </button>
+      </a>
+    </center>`;
+
+  return resumeButton
 }
 
 
@@ -63,31 +79,14 @@ function studentLearnMore(record) {
             <center>${studentFunImage(record)}</center><br>
             ${studentContact(record)}
             ${record.bio}
+            ${studentResume(record)}
           </div>
-          <center>
-            <button type="button" data-dismiss="modal" class="backButton btn btn-outline-primary title-font bottom mt-auto" aria-label="Close">Back</button>
-          </center>
         </div>
       </div>
     </div>
   `;
 
   return learnMoreButton + modal
-}
-
-function studentResume(record) {
-  if (record.resume == null) return "";
-
-  let resumeButton = `
-    <center>
-      <a target="_blank" href="${record.resume}">
-        <button type="button" class="btn btn-block btn-outline-primary resumeButton title-font bottom">
-          Resume
-        </button>
-      </a>
-    </center>`;
-
-  return resumeButton
 }
 
 
@@ -101,7 +100,6 @@ function buildCohortCard(record) {
     </div>
     <div class="mt-auto cohortCard--learnMore">
       ${studentContact(record)}
-      ${studentResume(record)}
       ${studentLearnMore(record)}
     </div>
   </div>`;
