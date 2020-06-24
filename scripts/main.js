@@ -35,7 +35,7 @@ const buildPortfolio = (href) => buildHREFIcon(href, buildFasIcon("globe"));
 const buildGithub = (href) => buildHREFIcon(href, buildFabIcon("github"));
 const buildLinkedin = (href) => buildHREFIcon(href, buildFabIcon("linkedin"));
 
-const hireMe = (record) => record.job_searching == false ? "" : `<div class="hire-me">Hire me!</div>`;
+const hireMe = (record) => record.job_searching === false ? "" : `<div class="hire-me">Hire me!</div>`;
 
 
 function studentContact(record) {
@@ -50,19 +50,17 @@ function studentContact(record) {
 function studentResume(record) {
   let disabled = record.resume == null ? "disabled" : "";
 
-  let resumeButton = `
+  return `
     <a role="button" target="_blank" href="${record.resume}" aria-disabled="true" class="btn btn-default w-100 resumeButton cardActionButton title-font bottom ${disabled}" ${disabled}>
       Resume
-    </a>`;
-
-  return resumeButton
+    </a>`
 }
 
 
 function studentLearnMore(record) {
-  if (record.bio == null) return "";
+  let disabled = record.bio === "" || record.bio === null ? "disabled" : "";
 
-  let learnMoreButton = `<a type="button" class="btn btn-default btn-lg w-100 learnMoreButton cardActionButton title-font bottom" data-toggle="modal" data-target="#${cohortMemberID(record.id)}">More!</a>`;
+  let learnMoreButton = `<a role="button" href="#" class="btn btn-default btn-lg w-100 learnMoreButton cardActionButton title-font bottom ${disabled}" data-toggle="modal" data-target="#${cohortMemberID(record.id)}" ${disabled}>More!</a>`;
   let resumeButton = studentResume(record);
 
   let buttonGroup = `

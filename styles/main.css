@@ -178,8 +178,15 @@ main {
 a.cardActionButton {
   line-height: 1.75;
   font-size: 1.5rem;
-  color: white !important;
+
+  color: white;
+  transition: color ease 0.5s;
+
   background-color: #238193 !important;
+}
+
+a.cardActionButton:hover {
+  color: #F6881F;
 }
 
 a.learnMoreButton {
@@ -204,10 +211,12 @@ a.resumeButton {
 
 .contactIcons {
   color: #238193;
+  transition: transform ease 0.5s, color ease 0.5s;
 }
 
 a:not(.disabled) > .contactIcons:hover {
   transform: scale(1.2);
+  color: #F6881F;
 }
 
 .modal-header {
