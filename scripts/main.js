@@ -35,6 +35,8 @@ const buildPortfolio = (href) => buildHREFIcon(href, buildFasIcon("globe"));
 const buildGithub = (href) => buildHREFIcon(href, buildFabIcon("github"));
 const buildLinkedin = (href) => buildHREFIcon(href, buildFabIcon("linkedin"));
 
+const hireMe = (record) => record.job_searching == false ? "" : `<div class="hire-me">Hire me!</div>`;
+
 
 function studentContact(record) {
   return `<div class="studentContact">
@@ -79,7 +81,6 @@ function studentLearnMore(record) {
             <center>${studentFunImage(record)}</center><br>
             ${studentContact(record)}
             ${record.bio}
-            ${studentResume(record)}
           </div>
         </div>
       </div>
@@ -93,7 +94,7 @@ function studentLearnMore(record) {
 function buildCohortCard(record) {
   return `
   <div class="col-md-3 d-flex flex-column cohortMems">
-    <div class="hire-me">Hire me!</div>
+    ${hireMe(record)}
     ${studentProImage(record)}
     <div class="card-body cohortCard--studentInfo">
       ${studentName(record)}
@@ -120,9 +121,15 @@ function buildTech(record) {
 
 
 function createCohortMembersVisuals(data) {
+  let isJobSearching = data.filter((item) => item.job_searching == true);
+  let isNotJobSearching = data.filter((item) => item.job_searching == false);
+
   // randomizing students
-  shuffle(data);
-  data.forEach((item) => document.getElementById("cohort").innerHTML += buildCohortCard(item));
+  shuffle(isJobSearching);
+  shuffle(isNotJobSearching);
+
+  isJobSearching.forEach((item) => document.getElementById("cohort").innerHTML += buildCohortCard(item));
+  isNotJobSearching.forEach((item) => document.getElementById("cohort").innerHTML += buildCohortCard(item));
 }
 
 
