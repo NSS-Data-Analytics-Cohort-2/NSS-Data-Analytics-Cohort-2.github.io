@@ -48,16 +48,12 @@ function studentContact(record) {
 
 
 function studentResume(record) {
-  if (record.resume == null) return "";
+  let disabled = record.resume == null ? "disabled" : "";
 
   let resumeButton = `
-    <center>
-      <a target="_blank" href="${record.resume}">
-        <button type="button" class="btn btn-block btn-outline-primary resumeButton title-font bottom">
-          Resume
-        </button>
-      </a>
-    </center>`;
+    <a role="button" target="_blank" href="${record.resume}" aria-disabled="true" class="btn btn-default w-100 resumeButton cardActionButton title-font bottom ${disabled}" ${disabled}>
+      Resume
+    </a>`;
 
   return resumeButton
 }
@@ -66,7 +62,16 @@ function studentResume(record) {
 function studentLearnMore(record) {
   if (record.bio == null) return "";
 
-  let learnMoreButton = `<center><button type="button" class="btn btn-block btn-outline-primary learnMoreButton title-font bottom" data-toggle="modal" data-target="#${cohortMemberID(record.id)}">Learn More!</button></center>`;
+  let learnMoreButton = `<a type="button" class="btn btn-default btn-lg w-100 learnMoreButton cardActionButton title-font bottom" data-toggle="modal" data-target="#${cohortMemberID(record.id)}">More!</a>`;
+  let resumeButton = studentResume(record);
+
+  let buttonGroup = `
+    <div class="btn-group d-flex" role="group">
+      ${resumeButton}
+      ${learnMoreButton}
+    </div>
+  `;
+
   let modal = `
     <div class="modal fade" id="${cohortMemberID(record.id)}" tabindex="-1" role="dialog" aria-labelledby="${cohortMemberID(record.id)}Label" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -81,13 +86,14 @@ function studentLearnMore(record) {
             <center>${studentFunImage(record)}</center><br>
             ${studentContact(record)}
             ${record.bio}
+            ${record.resume == null ? "" : resumeButton}
           </div>
         </div>
       </div>
     </div>
   `;
 
-  return learnMoreButton + modal
+  return buttonGroup + modal
 }
 
 
