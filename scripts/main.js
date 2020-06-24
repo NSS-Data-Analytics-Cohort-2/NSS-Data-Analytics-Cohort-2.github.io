@@ -93,6 +93,7 @@ function studentLearnMore(record) {
 function buildCohortCard(record) {
   return `
   <div class="col-md-3 d-flex flex-column cohortMems">
+    <div class="hire-me">Hire me!</div>
     ${studentProImage(record)}
     <div class="card-body cohortCard--studentInfo">
       ${studentName(record)}

@@ -135,6 +135,29 @@ main {
   padding-left: 0;
 }
 
+.hire-me {
+  width: 200px;
+  position: absolute;
+
+  top: 27px;
+  right: -48px;
+  left: auto;
+
+  border-bottom: 50px solid #F6881F;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  height: 0;
+
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 1px;
+
+  color: #f0f0f0;
+
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(45deg);
+}
+
 .cohortMems {
   top: 0;
   transition: top ease 0.5s;
