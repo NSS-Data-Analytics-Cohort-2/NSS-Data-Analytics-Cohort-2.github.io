@@ -39,10 +39,10 @@ const hireMe = (record) => record.job_searching === false ? "" : `<div class="hi
 
 
 function studentContact(record) {
-  return `<div class="studentContact">
-    ${buildPortfolio(record.portfolio)}
+    return `<div class="studentContact">
     ${buildGithub(record.github)}
     ${buildLinkedin(record.linkedin)}
+    ${buildPortfolio(record.portfolio)}
   </div>`
 }
 
