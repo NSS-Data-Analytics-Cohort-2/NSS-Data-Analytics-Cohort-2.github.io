@@ -11,7 +11,7 @@ python3.7 -m http.server
 ``` 
 * Then, make changes as needed. 
 You should be able to go to `http://localhost:8000/` in your browser!
-As you make changes in the code, refresh your browser to see them committed.
+As you make changes in the code, _perform a hard refresh and empty cache_ your browser to see them committed.
 
 ### Updating Profile Content
 All user profile info is stored in Google Drive.
@@ -36,7 +36,7 @@ The output file should have the following fields per user:
 * **resume** - Path to the students [resume](assets/resume)
 * **id** - Helps for targeting the modal. The notebook will create this for you
 
-Load the website using the ocmmand above and make sure everything is working properly!
+Load the website using the command above and make sure everything is working properly!
 
 ### Updating Pictures
 All original pictures are stored in Google Drive.
@@ -52,11 +52,11 @@ Examples ::
 Pictures with a **1** in the name will be shown on the main page (professional pictures).
 Pictures with a **2** in the name will be shown in the modal when a user clicks "More!" (non-professional / funny).
 
-It is important to make sure that the _orient_ of the pictures are accurate! 
+It is important to make sure that the _orientation_ of the pictures are accurate! 
 No pictures should be rotated.
 
 Next, open [this notebook](utilities/Resizing%20Images.ipynb) with [Anaconda Navigator](https://www.anaconda.com/products/individual). 
-This notebook is responsible for "resizing" all images into an appropriate format (2/3) that works with the card height /width ratio on the website.
+This notebook is responsible for "resizing" all images into an appropriate format (2/3) that works with the card height/width ratio on the website.
 It will dump the results [here](assets/img/resized).
 If a student does not have a "funny" photo, it will also copy their resized "professional" photo to be used as their "funny" photo.
 
