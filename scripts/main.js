@@ -26,7 +26,7 @@ const studentName = (record) => `<h4 class="card-title title-font">${record.firs
 const studentReelThemIn = (record) => record.reelThemIn == null ? "" : `<p class="card-text">${record.reelThemIn}</p>`
 
 // if they don't have an href, don't display the icon.
-const buildHREFIcon = (href, icon) => href == null ? "" : `<a href=${href} target="_blank">${icon}</i></a>`
+const buildHREFIcon = (href, icon) => href == null ? `<a href=${href} target="_blank" class="disabled" disabled>${icon}</i></a>` : `<a href=${href} target="_blank">${icon}</i></a>`
 
 const buildFabIcon = (label) => `<i class="fab fa-${label} fa-2x contactIcons"></i>`
 const buildFasIcon = (label) => `<i class="fas fa-${label} fa-2x contactIcons"></i>`
@@ -34,6 +34,8 @@ const buildFasIcon = (label) => `<i class="fas fa-${label} fa-2x contactIcons"><
 const buildPortfolio = (href) => buildHREFIcon(href, buildFasIcon("globe"));
 const buildGithub = (href) => buildHREFIcon(href, buildFabIcon("github"));
 const buildLinkedin = (href) => buildHREFIcon(href, buildFabIcon("linkedin"));
+
+const hireMe = (record) => record.job_searching === false ? "" : `<div class="hire-me">Hire me!</div>`;
 
 
 function studentContact(record) {
@@ -45,10 +47,29 @@ function studentContact(record) {
 }
 
 
-function studentLearnMore(record) {
-  if (record.bio == null) return "";
+function studentResume(record) {
+  let disabled = record.resume == null ? "disabled" : "";
 
-  let learnMoreButton = `<center><button type="button" class="btn btn-block btn-outline-primary learnMoreButton title-font bottom" data-toggle="modal" data-target="#${cohortMemberID(record.id)}">Learn More!</button></center>`;
+  return `
+    <a role="button" target="_blank" href="${record.resume}" aria-disabled="true" class="btn btn-default w-100 resumeButton cardActionButton title-font bottom ${disabled}" ${disabled}>
+      Resume
+    </a>`
+}
+
+
+function studentLearnMore(record) {
+  let disabled = record.bio === "" || record.bio === null ? "disabled" : "";
+
+  let learnMoreButton = `<a role="button" href="#" class="btn btn-default btn-lg w-100 learnMoreButton cardActionButton title-font bottom ${disabled}" data-toggle="modal" data-target="#${cohortMemberID(record.id)}" ${disabled}>More!</a>`;
+  let resumeButton = studentResume(record);
+
+  let buttonGroup = `
+    <div class="btn-group d-flex" role="group">
+      ${resumeButton}
+      ${learnMoreButton}
+    </div>
+  `;
+
   let modal = `
     <div class="modal fade" id="${cohortMemberID(record.id)}" tabindex="-1" role="dialog" aria-labelledby="${cohortMemberID(record.id)}Label" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -63,37 +84,21 @@ function studentLearnMore(record) {
             <center>${studentFunImage(record)}</center><br>
             ${studentContact(record)}
             ${record.bio}
+            ${record.resume == null ? "" : resumeButton}
           </div>
-          <center>
-            <button type="button" data-dismiss="modal" class="backButton btn btn-outline-primary title-font bottom mt-auto" aria-label="Close">Back</button>
-          </center>
         </div>
       </div>
     </div>
   `;
 
-  return learnMoreButton + modal
-}
-
-function studentResume(record) {
-  if (record.resume == null) return "";
-
-  let resumeButton = `
-    <center>
-      <a target="_blank" href="${record.resume}">
-        <button type="button" class="btn btn-block btn-outline-primary resumeButton title-font bottom">
-          Resume
-        </button>
-      </a>
-    </center>`;
-
-  return resumeButton
+  return buttonGroup + modal
 }
 
 
 function buildCohortCard(record) {
   return `
   <div class="col-md-3 d-flex flex-column cohortMems">
+    ${hireMe(record)}
     ${studentProImage(record)}
     <div class="card-body cohortCard--studentInfo">
       ${studentName(record)}
@@ -101,7 +106,6 @@ function buildCohortCard(record) {
     </div>
     <div class="mt-auto cohortCard--learnMore">
       ${studentContact(record)}
-      ${studentResume(record)}
       ${studentLearnMore(record)}
     </div>
   </div>`;
@@ -121,9 +125,15 @@ function buildTech(record) {
 
 
 function createCohortMembersVisuals(data) {
+  let isJobSearching = data.filter((item) => item.job_searching == true);
+  let isNotJobSearching = data.filter((item) => item.job_searching == false);
+
   // randomizing students
-  shuffle(data);
-  data.forEach((item) => document.getElementById("cohort").innerHTML += buildCohortCard(item));
+  shuffle(isJobSearching);
+  shuffle(isNotJobSearching);
+
+  isJobSearching.forEach((item) => document.getElementById("cohort").innerHTML += buildCohortCard(item));
+  isNotJobSearching.forEach((item) => document.getElementById("cohort").innerHTML += buildCohortCard(item));
 }
 
 
