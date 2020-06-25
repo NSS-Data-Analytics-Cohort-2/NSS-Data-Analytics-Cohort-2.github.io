@@ -36,7 +36,7 @@ The output file should have the following fields per user:
 * **resume** - Path to the students [resume](assets/resume)
 * **id** - Helps for targeting the modal. The notebook will create this for you
 
-Load the website using the ocmmand above and make sure everything is working properly!
+Load the website using the command above and make sure everything is working properly!
 
 ### Updating Pictures
 All original pictures are stored in Google Drive.
@@ -56,7 +56,7 @@ It is important to make sure that the _orient_ of the pictures are accurate!
 No pictures should be rotated.
 
 Next, open [this notebook](utilities/Resizing%20Images.ipynb) with [Anaconda Navigator](https://www.anaconda.com/products/individual). 
-This notebook is responsible for "resizing" all images into an appropriate format (2/3) that works with the card height /width ratio on the website.
+This notebook is responsible for "resizing" all images into an appropriate format (2/3) that works with the card height/width ratio on the website.
 It will dump the results [here](assets/img/resized).
 If a student does not have a "funny" photo, it will also copy their resized "professional" photo to be used as their "funny" photo.
 
