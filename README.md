@@ -34,6 +34,8 @@ The output file should have the following fields per user:
 * **proImg** - Path to the professional [resized images](assets/img/resized) 
 * **funImg** - Path to the funny/unprofessional [resized images](assets/img/resized)
 * **resume** - Path to the students [resume](assets/resume)
+* **podcast** - (Podcast iframe) This was gathered by going [here](https://soundcloud.com/nashville-software-school/sets/part-time-data-analytics-cohort-2), then going to each student's podcast, choosing to share, then copying the iframe from the embed tab.
+* **capstoneVideo** - (Capstone Video) Youtube link to the student's capstone demo
 * **id** - Helps for targeting the modal. The notebook will create this for you
 
 Load the website using the command above and make sure everything is working properly!
