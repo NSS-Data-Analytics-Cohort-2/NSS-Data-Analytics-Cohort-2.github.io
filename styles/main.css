@@ -189,12 +189,12 @@ a.cardActionButton:hover {
   color: #F6881F;
 }
 
-a.learnMoreButton {
-  border-radius: 0 0 .25rem 0;
+a.resumeButton {
+  border-radius: 0 0 0 0.25em;
 }
 
-a.resumeButton {
-  border-radius: 0 0 0 .25rem;
+a.demoButton {
+  border-radius: 0 0 0.25em 0;
 }
 
 .modal-body {
