@@ -60,6 +60,9 @@ const studentCapstoneDemoButton = (record) => `<a role="button" target="_blank" 
 /** HIRE ME TEMPLATE **/
 const hireMe = (record) => record.job_searching === false ? "" : `<div class="hire-me">Hire me!</div>`;
 
+/* PODCAST IFRAME */
+const podcastIFrame = (record) => record.podcast === "" || record.podcast === null ? "" : record.podcast;
+
 
 /** PROFILE CARD TEMPLATE **/
 function buildCohortCard(record) {
@@ -70,15 +73,17 @@ function buildCohortCard(record) {
     ${studentFunImage(record)}
     <div class="card-body cohortCard--studentInfo">
         ${studentName(record)}
-        ${studentReelThemIn(record)}
-        ${studentBio(record)}
-    </div>
-    <div class="mt-auto cohortCard--learnMore">
         <div class="studentContact">
             ${buildGithub(record.github)}
             ${buildLinkedin(record.linkedin)}
             ${buildPortfolio(record.portfolio)}
         </div>
+        <hr class="spacer">
+        ${studentReelThemIn(record)}
+        ${studentBio(record)}
+    </div>
+    <div class="mt-auto cohortCard--learnMore">
+        ${podcastIFrame(record)}
         <div class="btn-group d-flex" role="group">
             ${studentResumeButton(record)}
             ${studentCapstoneDemoButton(record)}
