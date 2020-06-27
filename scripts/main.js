@@ -26,19 +26,18 @@ function shuffle(a) {
     return a;
 }
 
-const cohortMemberID = (id) => `cohortMember${id}`;
 const disabled = (value) => value === null || value === "" ? "disabled" : "";
 
 
 /** IMAGE TEMPLATES **/
-const studentImage = (img, alt, id) => `<img class="card-img-top" src="${img}" alt="${alt}" data-toggle="modal" data-target="#${cohortMemberID(id)}" style="cursor:pointer;">`
-const studentProImage = (record) => studentImage(record.proImg, `${record.firstName} ${record.lastName}`, record.id);
-const studentFunImage = (record) => studentImage(record.funImg, `${record.firstName} ${record.lastName}`, record.id);
+const studentProImage = (record) => `<img class="card-img-top card-img-pro" src="${record.proImg}" alt="Pro Image" style="cursor:pointer;">`
+const studentFunImage = (record) => `<img class="card-img-top card-img-fun" src="${record.funImg}" alt="Fun Image" style="cursor:pointer;">`
 
 
 /** TEXT TEMPLATES **/
 const studentName = (record) => `<h4 class="card-title title-font">${record.firstName} ${record.lastName}</h4>`
-const studentReelThemIn = (record) => record.reelThemIn == null ? "" : `<p class="card-text">${record.reelThemIn}</p>`
+const studentReelThemIn = (record) => `<p class="card-text reelThemIn">${record.reelThemIn}</p>`
+const studentBio = (record) => `<p class="card-text bio">${record.bio === null || record.bio === "" ? record.reelThemIn : record.bio}</p>`
 
 
 /** ICON TEMPLATES **/
@@ -68,9 +67,11 @@ function buildCohortCard(record) {
 <div class="col-md-3 d-flex flex-column cohortMems">
     ${hireMe(record)}
     ${studentProImage(record)}
+    ${studentFunImage(record)}
     <div class="card-body cohortCard--studentInfo">
         ${studentName(record)}
         ${studentReelThemIn(record)}
+        ${studentBio(record)}
     </div>
     <div class="mt-auto cohortCard--learnMore">
         <div class="studentContact">
