@@ -194,6 +194,11 @@ button {
   overflow: scroll;
 }
 
+/* Hides scrollbar for the bio/reelthemin section */
+.cohortMems .cohortCard--studentInfo .card-text::-webkit-scrollbar {
+  display: none;
+}
+
 .cohortMems .cohortCard--studentInfo .bio { display: none; }
 .cohortMems:hover .cohortCard--studentInfo .reelThemIn { display: none; }
 .cohortMems:hover .cohortCard--studentInfo .bio { display: block; }
