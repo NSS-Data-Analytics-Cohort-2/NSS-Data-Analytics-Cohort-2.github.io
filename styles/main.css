@@ -1,3 +1,5 @@
+
+/* PRIMARY ELEMENTS */
 p {
   font-family: "Barlow", sans-serif;
 }
@@ -19,36 +21,33 @@ blockquote {
 
 header { height: 130px; }
 
+main {
+  margin-bottom: 20px;
+  margin-top: -30px;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* GENERAL PROPERTIES */
 .disabled {
   color: grey;
   opacity: 0.5;
 }
 
-.navbar {
-  background-color: rgb(55, 55, 56);
-  padding: 20px;
-}
-.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top {
-  background: white !important;
-}
-.navbar-brand {
-  display: flex;
-}
-.nav-spacing {
-  margin-right: 2em;
+.row {
+  justify-content: center;
 }
 
-#jumbheader {
-  box-shadow: 2px 2px 2px rgb(167, 166, 166);
-  background-color: #238193 !important;
-  color: lightgray;
-}
-.header-text {
-  margin: 0 auto;
-  padding-top: 10px;
-  font-weight: bold;
-  height: 50px;
-  color: white;
+.col,
+[class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .title-font {
@@ -60,6 +59,63 @@ header { height: 130px; }
   height: 50px;
 }
 
+.jumbheader {
+  box-shadow: 2px 2px 2px rgb(167, 166, 166);
+  background-color: #238193 !important;
+  color: lightgray;
+}
+
+.jumbheader .header-text {
+  margin: 0 auto;
+  padding-top: 10px;
+  font-weight: bold;
+  height: 50px;
+  color: white;
+}
+
+
+/* NAVBAR */
+.navbar {
+  background-color: rgb(55, 55, 56);
+  padding: 20px;
+}
+
+.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top {
+  background: white !important;
+}
+
+.navbar.navbar-light.bg-light.footer {
+  margin-top: 10px;
+  font-size: 1em;
+  background-color: #238193 !important;
+  color: white;
+}
+
+.navbar-brand {
+  display: flex;
+}
+
+.nav-spacing {
+  margin-right: 2em;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.navbar #main-header {
+  display: inline-block;
+  color: #238193;
+}
+.navbar #main-header-small,
+.navbar #main-header-mobile {
+  display: none;
+}
+
+
+/* JUMBOTRON */
 .jumbotron.jumbotron-fluid {
   background: none;
 }
@@ -69,73 +125,42 @@ header { height: 130px; }
   margin-top: -80px;
 }
 
-main {
-  margin-bottom: 20px;
-  margin-top: -30px;
-  width: 100%;
-  overflow-y: hidden;
-  overflow-x: hidden;
-}
 
-.row {
-  justify-content: center;
-}
-
-.navbar-collapse {
-  justify-content: flex-end;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.col-md-3.cohortMems {
+/* COHORT MEMBER CARDS */
+.cohortMems {
   border: 1px solid lightgray;
   border-radius: 10px;
   box-shadow: 2px 2px 2px lightgray;
   margin: 10px;
   margin-bottom: 25px;
   background: white;
+  top: 0;
+  transition: top ease 0.5s;
 }
 
-.col-sm-2.technologies {
-  border: none;
-  border-radius: none;
-  box-shadow: none;
+.cohortMems:hover {
+  top: -10px;
 }
 
-.technos,
-.words {
-  margin-top: -55px;
-  background: white;
-  padding: 20px;
-  border-radius: 20px;
-}
-
-.techs {
-  width: 70px;
-  margin: 20px 0px;
-}
-
-.words {
-  padding: 50px;
-}
-
-.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-.card-img-top {
+.cohortMems .card-img-top {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-.col,
-[class*="col-"] {
-  padding-right: 0;
-  padding-left: 0;
+.cohortMems .card-img-fun {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Keep z-index less than the hire-me ribbon */
+  z-index: 10;
 }
 
-.hire-me {
+.cohortMems:hover .card-img-fun {
+    display: inline;
+}
+
+.cohortMems .hire-me {
   width: 200px;
   position: absolute;
 
@@ -154,28 +179,53 @@ main {
 
   color: #f0f0f0;
 
+  z-index: 99;
+
   transform: rotate(-45deg);
   -webkit-transform: rotate(45deg);
 }
 
-.cohortMems {
-  top: 0;
-  transition: top ease 0.5s;
+.cohortMems .cohortCard--studentInfo {
+
 }
 
-.cohortMems:hover {
-  top: -10px;
+.cohortMems .cohortCard--studentInfo .card-text {
+  height: 150px;
+  overflow: scroll;
 }
 
-.cohortCard--learnMore {
+/* Hides scrollbar for the bio/reelthemin section */
+.cohortMems .cohortCard--studentInfo .card-text::-webkit-scrollbar {
+  display: none;
+}
+
+.cohortMems .cohortCard--studentInfo .bio { display: none; }
+.cohortMems:hover .cohortCard--studentInfo .reelThemIn { display: none; }
+.cohortMems:hover .cohortCard--studentInfo .bio { display: block; }
+
+.cohortMems .cohortCard--studentInfo .studentContact {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  -webkit-justify-content: space-evenly;
+  margin-bottom: 0.75rem;
+}
+
+.cohortMems .cohortCard--studentInfo .studentContact .contactIcons {
+  color: #238193;
+  transition: transform ease 0.5s, color ease 0.5s;
+}
+
+.cohortMems .cohortCard--studentInfo .studentContact a:not(.disabled) > .contactIcons:hover {
+  transform: scale(1.2);
+  color: #F6881F;
+}
+
+.cohortMems .cohortCard--learnMore {
   padding: 1.25rem 0 0 0
 }
 
-.cohortCard--learnMore {
-  padding: 1.25rem 0 0 0
-}
-
-a.cardActionButton {
+.cohortMems .cohortCard--learnMore a.cardActionButton {
   line-height: 1.75;
   font-size: 1.5rem;
 
@@ -184,82 +234,51 @@ a.cardActionButton {
 
   background-color: #238193 !important;
 }
+.cohortMems .cohortCard--learnMore a.cardActionButton:hover { color: #F6881F; }
 
-a.cardActionButton:hover {
-  color: #F6881F;
+.cohortMems .cohortCard--learnMore a.resumeButton { border-radius: 0 0 0 0.25em; }
+.cohortMems .cohortCard--learnMore a.demoButton { border-radius: 0 0 0.25em 0; }
+
+
+/* TECHNOLOGIES */
+.technos,
+.words {
+  margin-top: -55px;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
 }
 
-a.learnMoreButton {
-  border-radius: 0 0 .25rem 0;
+.techs {
+  width: 70px;
+  margin: 20px 0;
 }
 
-a.resumeButton {
-  border-radius: 0 0 0 .25rem;
+.techs .technologies {
+  border: none;
+  border-radius: none;
+  box-shadow: none;
 }
 
-.modal-body {
-  display: block;
+
+/* THANK YOU SECTION */
+.words {
+  padding: 50px;
 }
 
-.studentContact {
-  text-align: center;
-  display: flex;
-  justify-content: space-evenly;
-  -webkit-justify-content: space-evenly;
-  margin-bottom: 0.75rem;
+#thanks .thank-you-title {
+  margin-top: 1em;
 }
 
-.contactIcons {
-  color: #238193;
-  transition: transform ease 0.5s, color ease 0.5s;
+#thanks .thank-you-list {
+  margin-bottom: 0;
+}
+#thanks .thank-you-list li {
+  list-style-type: none;
 }
 
-a:not(.disabled) > .contactIcons:hover {
-  transform: scale(1.2);
-  color: #F6881F;
-}
 
-.modal-header {
-  background-color: lightgray !important;
-  color: #238193;
-}
-
-.modal-body img {
-  width: 50%;
-  height: 50%;
-  box-shadow: 3px 3px 5px #cacaca;
-  border-radius: 10px;
-}
-
-.backButton {
-  margin-bottom: 1.5rem;
-}
-
-.navbar.navbar-light.bg-light.footer {
-  margin-top: 10px;
-  font-size: 1em;
-  background-color: #238193 !important;
-  color: white;
-}
-
-#demo-date {
-  text-align: center;
-  color: #238193 !important;
-}
-
-button {
-  cursor: pointer;
-}
-.btn-outline-primary {
-  color: #238193 !important;
-  border-color: #238193 !important;
-}
-
-.btn-outline-primary:hover {
-  color: white !important;
-  background-color: #238193 !important;
-}
-
+/* MOBILE INTEGRATIONS */
 /* adjusts size of contact icons depending on size of card */
 @media (min-width: 992px) and (max-width: 1200px) {
   .fa-3x {
@@ -292,15 +311,6 @@ button {
     font-size: 1.5em;
     margin-top: -10px;
   }
-  .modal-body {
-    display: block;
-  }
-  .modal-content {
-    width: 100%;
-  }
-  .modal-body img {
-    width: 100%;
-  }
   main {
     margin-bottom: 100px;
     margin-top: -50px;
@@ -309,26 +319,6 @@ button {
   .navbar-brand img {
     padding-right: none;
   }
-}
-
-.thank-you-title {
-  margin-top: 1em;
-}
-
-.thank-you-list {
-  margin-bottom: 0;
-}
-.thank-you-list li {
-  list-style-type: none;
-}
-
-#main-header {
-  display: inline-block;
-  color: #238193;
-}
-#main-header-small,
-#main-header-mobile {
-  display: none;
 }
 
 @media only screen and (min-width: 668px) and (max-width: 980px) {
