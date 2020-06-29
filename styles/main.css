@@ -241,6 +241,14 @@ button {
 
 
 /* TECHNOLOGIES */
+.technos,
+.words {
+  margin-top: -55px;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+
 .techs {
   width: 70px;
   margin: 20px 0;
