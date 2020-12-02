@@ -1,4 +1,4 @@
-# NSS Part Time Data Analytics Cohort 2 - [Website](https://NSS-Data-Analytics-Cohort-2.github.io)
+# NSS Part Time Data Analytics Cohort 3 - [Website](https://NSS-Data-Analytics-Cohort-3.github.io)
 
 ## Development
 
